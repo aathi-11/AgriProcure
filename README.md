@@ -19,7 +19,7 @@ This project builds that capability from data the team collects itself.
 
 - Will next week's modal price in a given mandi rise, fall or stay flat?
 - How well can prices be forecast per crop over the coming weeks?
-- Which combinations of weather and arrival events are frequently followed by price spikes?
+- Which combinations of arrivals and price movements are frequently followed by price spikes?
 - How can these findings support better procurement and selling timing?
 
 ---
@@ -32,19 +32,9 @@ This project builds that capability from data the team collects itself.
 
 | Stakeholder | Decision they face | How this project helps |
 |---|---|---|
-| Food processors (e.g. chips, ketchup, sauce makers) | When to buy raw material and how much to stock | Weekly price-direction signal and forecasts help avoid buying right before a spike and plan purchases ahead. |
+| Food processors (e.g. chips, ketchup, millers, grain buyers) | When to buy raw material and how much to stock | Weekly price-direction signal and forecasts help avoid buying right before a spike and plan purchases ahead. |
 | Farmer-producer organizations (FPOs) | When to sell or hold produce, and which mandi to sell in | Forecasts and spike rules show when prices are likely to rise, and which mandis behave differently. |
-| Procurement / supply-chain planners | How to plan inventory and budgets | Weather-linked spike rules act as an early-warning indicator during rain or heat events. |
-
-### Expected outcomes
-
-- A **predictive model** for next-week price direction that beats a naive "same as last week" baseline.
-- **Forecasts per crop** with measured error, so users know how much to trust them.
-- **Weather-linked spike rules** in plain language (for example, "heavy rain followed by low arrivals is often followed by a price spike"), with support, confidence and lift.
-- An **interactive Power BI dashboard** for exploring prices, forecasts, weather and rules by crop, mandi and date.
-- **Recommendations** on procurement timing based on both methods.
-
-> These are the goals of the project. Actual performance depends on the data and will be reported honestly, including where the models do not work well.
+| Procurement / supply-chain planners | How to plan inventory and budgets | Early-warning indicators for seasonal price shifts and arrival bottlenecks. |
 
 ---
 
@@ -52,9 +42,10 @@ This project builds that capability from data the team collects itself.
 
 | Item | Choice |
 |---|---|
-| Crops | Tomato, onion, potato |
-| Markets | 8-10 mandis in 1-2 states |
-| History | 3-5 years |
+| Commodities (5 Crops) | Tomato, Onion, Potato, Rice, Wheat |
+| States (14 States) | Punjab, Haryana, UP, MP, Maharashtra, Karnataka, Gujarat, Rajasthan, WB, Bihar, TN, Telangana, AP, Odisha |
+| Mandis | 70 Mandis (5 Mandis per State across 14 States) |
+| History | 3 Years (Oct 2023 - Sep 2026) |
 | Granularity | Market × crop × week panel |
 | Target (Review 1) | Next week's modal price: rise, fall or flat (within a ±X% band) |
 
@@ -62,16 +53,13 @@ This project builds that capability from data the team collects itself.
 
 ## 4. Data Sources and Collection
 
-All data is **collected by the team** (pre-built datasets from Kaggle, UCI, GitHub or similar are not used).
+All data is **collected by the team using custom web scraping** (pre-built third-party datasets from Kaggle, UCI, GitHub, or live third-party APIs are not used).
 
 | Data | Source | Method |
 |---|---|---|
-| Mandi prices and arrivals | CEDA Agri Market API (archives official Agmarknet data) | API collection script |
-| Rainfall and temperature | Open-Meteo historical weather API | API collection script |
+| Mandi prices and arrivals (3-Year History) | Agmarknet Wholesale Mandi Portal | Custom BeautifulSoup HTML Web Scraper on Apify Actor |
 
-**Data access note:** The official data.gov.in feed appears to serve current-day data only, so CEDA is the planned route for history. Access limits (date range, rate limits, authentication) are being tested first, and the source will be confirmed with the course instructor. If it fails, the fallbacks are daily polling of the data.gov.in resource or a change of scenario.
-
-The collection method, data dictionary and every cleaning decision are documented in the repository.
+The web scraping code (`actor/main.py`), mandi registry (`docs/mandi_list.csv`), and execution guide (`docs/apify_data_collection_guide.md`) are stored in the repository.
 
 ---
 

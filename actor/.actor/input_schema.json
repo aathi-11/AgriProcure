@@ -1,0 +1,40 @@
+{
+    "title": "AgriProcure Agmarknet REST API Scraper Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "states": {
+            "title": "Target States",
+            "type": "array",
+            "description": "List of Indian state names to query",
+            "default": [
+                "Punjab", "Haryana", "Uttar Pradesh", "Madhya Pradesh", "Maharashtra",
+                "Karnataka", "Gujarat", "Rajasthan", "West Bengal", "Bihar",
+                "Tamil Nadu", "Telangana", "Andhra Pradesh", "Odisha"
+            ],
+            "editor": "json"
+        },
+        "crops": {
+            "title": "Target Commodities (11 Crops)",
+            "type": "array",
+            "description": "List of commodities to fetch from Agmarknet API",
+            "default": [
+                "Tomato", "Onion", "Potato", "Rice", "Wheat",
+                "Maize", "Soybean", "Gram", "Groundnut", "Mustard", "Bajra"
+            ],
+            "editor": "json"
+        },
+        "startDate": {
+            "title": "Start Date (YYYY-MM-DD)",
+            "type": "string",
+            "description": "Start date for 1-year historical window",
+            "editor": "textfield"
+        },
+        "endDate": {
+            "title": "End Date (YYYY-MM-DD)",
+            "type": "string",
+            "description": "End date for historical window",
+            "editor": "textfield"
+        }
+    }
+}
