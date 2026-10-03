@@ -39,7 +39,7 @@ Notation: `P` = weekly modal price, `A` = weekly total arrivals, `g` = the mandi
 | `arrivals_pct_change_1w` | `A[t]/A[t-1] - 1` (%) | A sudden supply drop is the classic spike trigger. |
 | `arrivals_roll_mean_4` | Mean of `A` over `t-3…t` | Normal recent supply. |
 | `arrivals_vs_roll_mean_4` | `A[t] / arrivals_roll_mean_4 - 1` (%) | Supply shock relative to normal. |
-| `trading_days_active` | Days with trades in week `t` | Market disruptions (holidays, strikes) reduce trading days. |
+| `trading_days_active` | Days with trades in week `t` | Market disruptions (holidays, strikes) reduce trading days. *Built but not modelled: it is constant (6) in every full week of the current data (found in 4.2).* |
 
 EDA note: arrivals showed **near-zero correlation** with price in this panel (Charts 4 and 6). They are kept because they are central to the business question and to the association-rule work in Review 2, but they are expected to add little to the model.
 
