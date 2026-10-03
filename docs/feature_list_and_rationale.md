@@ -55,7 +55,7 @@ EDA note: arrivals showed **near-zero correlation** with price in this panel (Ch
 | `temp_mean_c` | Weekly mean temperature | Heat stresses perishable crops (especially tomato). |
 | `temp_max_c` | Hottest daily max in the week | Peak heat. |
 | `heat_flag` | 1 if `temp_max_c` ≥ 40 °C (IMD heat-wave threshold for plains) | Extreme heat indicator. |
-| `temp_anomaly_c` | `temp_mean_c` minus that mandi's average for the same calendar month | Unusual heat or cold for the season, rather than normal seasonal temperature. |
+| `temp_anomaly_c` | `temp_mean_c` minus the mandi's mean temperature over the previous 8 weeks (`t-8…t-1`) | Sudden heat or cold relative to recent conditions, rather than normal seasonal temperature. A trailing window is used because 1 year of data cannot give reliable month-of-year averages. |
 | `humidity_mean_pct` | Weekly mean relative humidity | High humidity speeds spoilage (onion, potato storage). |
 | `humidity_roll_mean_4` | Mean humidity over `t-3…t` | Sustained humid spells. |
 
@@ -83,7 +83,7 @@ EDA note: weather correlations with next week's price move were small (|ρ| ≤ 
 
 1. Every lag and rolling window uses `shift`/`rolling` **within the mandi × crop series**, ending at week `t`. Nothing from week `t+1` or later is used except the target.
 2. Cross-sectional features (`price_vs_state_mean`, `price_vs_national_mean`) use only week `t` prices.
-3. `temp_anomaly_c` uses monthly means computed from the **training period only** (see 4.2).
+3. `temp_anomaly_c` uses only the mandi's **previous** 8 weeks of temperature, so it needs no statistics from the test period.
 4. Calendar features of `t+1` are allowed because the calendar is known in advance.
 5. Model evaluation must use a **chronological split** (train on earlier weeks, test on later weeks), never a random split.
 
