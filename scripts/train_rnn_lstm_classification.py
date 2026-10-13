@@ -579,11 +579,13 @@ def generate_dl_visualizations(df_3c, df_bin, cm_dict, rnn_hist, lstm_hist, actu
     plt.close()
     
     # 2. Confusion Matrices Grid
-    fig, axes = plt.subplots(2, 3, figsize=(16, 10))
-    axes = axes.flatten()
+    model_keys = list(cm_dict.keys())
+    n_cols = 4 if len(model_keys) > 6 else 3
+    n_rows = int(np.ceil(len(model_keys) / n_cols))
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(5 * n_cols, 4.5 * n_rows))
+    axes = np.array(axes).flatten()
     class_labels = ["Fall", "Rise", "Flat"]
     
-    model_keys = ["Naive Baseline", "Logistic Regression", "Random Forest", "Tuned XGBoost", "SimpleRNN", "Deep LSTM"]
     for idx, m_name in enumerate(model_keys):
         cm = cm_dict[m_name]
         sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=axes[idx],
@@ -592,7 +594,10 @@ def generate_dl_visualizations(df_3c, df_bin, cm_dict, rnn_hist, lstm_hist, actu
         axes[idx].set_xlabel("Predicted")
         axes[idx].set_ylabel("Actual")
         
-    plt.suptitle("Confusion Matrices Across Models (±5% Price Movement Threshold)", fontsize=14, fontweight="bold", y=0.99)
+    for idx in range(len(model_keys), len(axes)):
+        axes[idx].set_visible(False)
+        
+    plt.suptitle("Confusion Matrices Across Models (+-5% Price Movement Threshold)", fontsize=14, fontweight="bold", y=0.99)
     plt.tight_layout()
     plt.savefig(os.path.join(FIG_DIR, "chart2_confusion_matrices_all_models.png"), dpi=300, bbox_inches="tight")
     plt.close()
@@ -609,7 +614,7 @@ def generate_dl_visualizations(df_3c, df_bin, cm_dict, rnn_hist, lstm_hist, actu
     ax.set_xticks(x)
     ax.set_xticklabels(df_3c["Model"], rotation=25, ha="right", fontsize=9)
     ax.set_ylabel("Metric Score")
-    ax.set_title("Comprehensive Model Benchmark (±5% Price Band: Rise, Fall, Flat)", fontweight="bold", fontsize=13)
+    ax.set_title("Comprehensive Model Benchmark (+-5% Price Band: Rise, Fall, Flat)", fontweight="bold", fontsize=13)
     ax.legend(loc="upper left")
     ax.grid(True, alpha=0.3)
     
@@ -652,7 +657,7 @@ def main():
     generate_dl_visualizations(df_3c, df_bin, cm_dict, rnn_hist, lstm_hist, actuals, lstm_ts_preds)
     
     print("\n" + "=" * 70)
-    print("3-CLASS CLASSIFICATION BENCHMARK (Threshold = ±5%):")
+    print("3-CLASS CLASSIFICATION BENCHMARK (Threshold = +-5%):")
     print("=" * 70)
     print(df_3c[["Model", "Accuracy", "Macro_F1", "ROC_AUC_OvR"]].to_string(index=False))
     

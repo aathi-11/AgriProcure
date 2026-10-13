@@ -21,8 +21,8 @@ In response to operational procurement requirements, we conducted a rigorous ext
    - While gradient-boosted trees (XGBoost, CatBoost) process static tabular feature matrices, **Recurrent Neural Networks (RNN)** and **Long Short-Term Memory Networks (LSTM)** model **dynamic multi-week sequences** ($L=4$ weeks of price, arrivals, and weather observations).
    - This allows the neural network to capture sequential momentum, decay of weather shocks, and non-linear interactions across consecutive trading weeks.
 
-### Core Headline Findings:
-- **Tuned XGBoost** achieved the highest overall accuracy on both 3-class (**67.36% Accuracy**, ROC-AUC **0.7683**) and binary detection (**80.69% Binary Accuracy**, ROC-AUC **0.8121**, **64.62% Precision**).
+#### Core Headline Findings:
+- **Tuned CatBoost & Tuned XGBoost** achieved the highest overall accuracies: CatBoost led 3-class direction with **68.48% Accuracy** (ROC-AUC **0.7731**), while XGBoost led binary spike detection with **80.69% Binary Accuracy** (ROC-AUC **0.8121**, **64.62% Precision**).
 - **Deep Sequence Models (LSTM & SimpleRNN)** excelled at **spike sensitivity (Recall)**, successfully capturing over **73.59% of all true price spikes**, providing an invaluable early-warning safety net.
 - **Deep LSTM Continuous Price Regressor** achieved a competitive time-series forecast MAPE of **4.69%** (RMSE: ₹127.19/qtl) on out-of-sample test weeks.
 
@@ -67,7 +67,7 @@ Sequence Input: [X_{t-3}, X_{t-2}, X_{t-1}, X_t]  (Shape: Batch x 4 x 37)
                            |
                  [Dense Linear (32 -> 3)]
                            |
-       Softmax Probs: [P(Fall), P(Rise), P(Flat)]
+        Softmax Probs: [P(Fall), P(Rise), P(Flat)]
 ```
 
 ![Training Loss Curves](figures/deep_learning/chart1_lstm_rnn_loss_curves.png)
@@ -85,7 +85,8 @@ All models were evaluated on the exact same chronological out-of-sample test set
 | **Deep LSTM (PyTorch)** | 49.64% | 0.4827 | 0.5138 | 0.2619 | 0.4988 | 0.7201 | **75.47%** | 55.38% | 42.49% | 0.7249 |
 | **Logistic Regression (Balanced)** | 56.75% | 0.5274 | 0.5783 | 0.3297 | 0.4793 | 0.7315 | 51.71% | 67.15% | 53.85% | 0.7427 |
 | **Random Forest (Balanced)** | 57.66% | **0.5338** | 0.5833 | 0.4139 | 0.4382 | **0.7465** | 42.81% | **75.32%** | 53.99% | 0.7614 |
-| **Tuned XGBoost** | **67.36%** | 0.5050 | **0.6414** | **0.4554** | **0.6260** | 0.6954 | 15.75% | 42.83% | **86.84%** | **0.7683** |
+| **Tuned XGBoost** | 67.36% | 0.5050 | 0.6414 | 0.4554 | 0.6260 | 0.6954 | 15.75% | 42.83% | 86.84% | 0.7683 |
+| **Tuned CatBoost** | **68.48%** | 0.5148 | **0.6502** | **0.5393** | **0.6480** | 0.6989 | 16.44% | 42.11% | **88.75%** | **0.7731** |
 
 ![Confusion Matrices](figures/deep_learning/chart2_confusion_matrices_all_models.png)
 
@@ -102,6 +103,7 @@ In supply-chain management, predicting whether a price will increase $>+5\%$ is 
 | **Deep SimpleRNN** | 71.73% | 0.5472 | 43.55% | **73.59%** | **0.8105** | Excellent sequence shock memory |
 | **Logistic Regression** | 72.38% | **0.5600** | 45.16% | **73.68%** | 0.7970 | Strong linear baseline with high recall |
 | **Deep LSTM** | 72.68% | 0.5174 | 43.85% | 63.08% | 0.7829 | Multi-week temporal memory |
+| **Tuned CatBoost** | 80.00% | 0.5075 | 61.50% | 43.19% | 0.8063 | Robust symmetric trees, high precision |
 | **Tuned XGBoost** | **80.69%** | 0.5099 | **64.62%** | 42.11% | **0.8121** | **Highest Precision (Minimal False Alarms)** |
 
 ![Metric Comparison](figures/deep_learning/chart3_classification_metrics_comparison.png)
