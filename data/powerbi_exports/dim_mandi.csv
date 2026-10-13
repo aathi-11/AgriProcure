@@ -1,0 +1,71 @@
+Mandi_ID,Market_Name,District,State,Region,Mandi_Tier,Latitude,Longitude
+1,Agra Apmc Market,Agra,Uttar Pradesh,North,Primary APMC Hub,26.3967,80.4962
+2,Ahmedabad Apmc Market,Ahmedabad,Gujarat,West,Primary APMC Hub,21.9587,70.7424
+3,Alwar Apmc Market,Alwar,Rajasthan,West,Secondary APMC Mandi,26.8738,73.7679
+4,Ambala Apmc Market,Ambala,Haryana,North,Secondary APMC Mandi,29.0588,75.6356
+5,Amritsar Apmc Market,Amritsar,Punjab,North,Primary APMC Hub,31.2971,74.8912
+6,Balasore Apmc Market,Balasore,Odisha,East,Secondary APMC Mandi,21.2517,84.6485
+7,Bangalore Apmc Market,Bangalore,Karnataka,South,Primary APMC Hub,15.7673,75.2639
+8,Bathinda Apmc Market,Bathinda,Punjab,North,Secondary APMC Mandi,30.6971,75.0412
+9,Belgaum Apmc Market,Belgaum,Karnataka,South,Secondary APMC Mandi,15.0173,75.4139
+10,Berhampur Apmc Market,Berhampur,Odisha,East,Secondary APMC Mandi,20.8017,84.7985
+11,Bhagalpur Apmc Market,Bhagalpur,Bihar,East,Secondary APMC Mandi,25.0961,85.0131
+12,Bhopal Apmc Market,Bhopal,Madhya Pradesh,Central,Secondary APMC Mandi,23.1234,78.3569
+13,Bhubaneswar Apmc Market,Bhubaneswar,Odisha,East,Secondary APMC Mandi,21.2517,84.7985
+14,Bikaner Apmc Market,Bikaner,Rajasthan,West,Secondary APMC Mandi,27.4738,73.9179
+15,Burdwan Apmc Market,Burdwan,West Bengal,East,Secondary APMC Mandi,22.5368,87.705
+16,Chennai Apmc Market,Chennai,Tamil Nadu,South,Secondary APMC Mandi,10.8271,78.5069
+17,Chitradurga Apmc Market,Chitradurga,Karnataka,South,Secondary APMC Mandi,15.1673,75.5639
+18,Coimbatore Apmc Market,Coimbatore,Tamil Nadu,South,Secondary APMC Mandi,11.1271,78.5069
+19,Cuttack Apmc Market,Cuttack,Odisha,East,Secondary APMC Mandi,21.1017,84.9485
+20,Davangere Apmc Market,Davangere,Karnataka,South,Secondary APMC Mandi,15.6173,75.5639
+21,Gaya Apmc Market,Gaya,Bihar,East,Secondary APMC Mandi,25.5461,85.1631
+22,Gondal Apmc Market,Gondal,Gujarat,West,Secondary APMC Mandi,21.8087,71.1924
+23,Guntur Apmc Market,Guntur,Andhra Pradesh,South,Secondary APMC Mandi,15.6129,79.74
+24,Gwalior Apmc Market,Gwalior,Madhya Pradesh,Central,Secondary APMC Mandi,22.8234,78.6569
+25,Hisar Apmc Market,Hisar,Haryana,North,Secondary APMC Mandi,29.0588,76.0856
+26,Hooghly Apmc Market,Hooghly,West Bengal,East,Secondary APMC Mandi,23.1368,87.855
+27,Hubli Apmc Market,Hubli,Karnataka,South,Secondary APMC Mandi,15.6173,75.7139
+28,Hyderabad Apmc Market,Hyderabad,Telangana,South,Secondary APMC Mandi,18.5624,79.0193
+29,Indore Apmc Market,Indore,Madhya Pradesh,Central,Secondary APMC Mandi,22.5234,78.8069
+30,Jabalpur Apmc Market,Jabalpur,Madhya Pradesh,Central,Secondary APMC Mandi,22.6734,78.8069
+31,Jaipur Apmc Market,Jaipur,Rajasthan,West,Primary APMC Hub,26.8738,74.3679
+32,Jalandhar Apmc Market,Jalandhar,Punjab,North,Secondary APMC Mandi,31.1471,75.4912
+33,Jodhpur Apmc Market,Jodhpur,Rajasthan,West,Secondary APMC Mandi,27.1738,74.3679
+34,Kanpur Apmc Market,Kanpur,Uttar Pradesh,North,Secondary APMC Mandi,27.1467,81.0962
+35,Karimnagar Apmc Market,Karimnagar,Telangana,South,Secondary APMC Mandi,18.5624,79.1693
+36,Karnal Apmc Market,Karnal,Haryana,North,Secondary APMC Mandi,28.6088,76.3856
+37,Kolkata Apmc Market,Kolkata,West Bengal,East,Secondary APMC Mandi,22.6868,88.155
+38,Kota Apmc Market,Kota,Rajasthan,West,Secondary APMC Mandi,26.8738,74.5179
+39,Kurnool Apmc Market,Kurnool,Andhra Pradesh,South,Secondary APMC Mandi,15.9129,80.04
+40,Lasalgaon Apmc Market,Lasalgaon,Maharashtra,West,Secondary APMC Mandi,19.9015,76.0139
+41,Lucknow Apmc Market,Lucknow,Uttar Pradesh,North,Secondary APMC Mandi,27.1467,81.2462
+42,Ludhiana Apmc Market,Ludhiana,Punjab,North,Secondary APMC Mandi,31.5971,75.6412
+43,Madurai Apmc Market,Madurai,Tamil Nadu,South,Secondary APMC Mandi,10.6771,79.1069
+44,Mahbubnagar Apmc Market,Mahbubnagar,Telangana,South,Secondary APMC Mandi,17.8124,79.4693
+45,Mahuva Apmc Market,Mahuva,Gujarat,West,Secondary APMC Mandi,22.1087,71.6424
+46,Malda Apmc Market,Malda,West Bengal,East,Secondary APMC Mandi,22.9868,88.305
+47,Meerut Apmc Market,Meerut,Uttar Pradesh,North,Secondary APMC Mandi,26.9967,81.3962
+48,Muzaffarpur Apmc Market,Muzaffarpur,Bihar,East,Secondary APMC Mandi,25.3961,85.7631
+49,Nagpur Apmc Market,Nagpur,Maharashtra,West,Secondary APMC Mandi,20.2015,76.1639
+50,Nizamabad Apmc Market,Nizamabad,Telangana,South,Secondary APMC Mandi,17.6624,78.5693
+51,Panipat Apmc Market,Panipat,Haryana,North,Secondary APMC Mandi,28.7588,75.6356
+52,Patiala Apmc Market,Patiala,Punjab,North,Secondary APMC Mandi,30.9971,74.8912
+53,Patna Apmc Market,Patna,Bihar,East,Secondary APMC Mandi,25.0961,84.8631
+54,Pimpalgaon Apmc Market,Pimpalgaon,Maharashtra,West,Secondary APMC Mandi,19.9015,75.2639
+55,Pune Apmc Market,Pune,Maharashtra,West,Primary APMC Hub,20.0515,75.2639
+56,Purnia Apmc Market,Purnia,Bihar,East,Secondary APMC Mandi,25.5461,84.8631
+57,Rajahmundry Apmc Market,Rajahmundry,Andhra Pradesh,South,Secondary APMC Mandi,15.4629,79.44
+58,Rajkot Apmc Market,Rajkot,Gujarat,West,Secondary APMC Mandi,21.9587,70.8924
+59,Salem Apmc Market,Salem,Tamil Nadu,South,Secondary APMC Mandi,10.9771,78.3569
+60,Sambalpur Apmc Market,Sambalpur,Odisha,East,Secondary APMC Mandi,20.9517,84.7985
+61,Siliguri Apmc Market,Siliguri,West Bengal,East,Secondary APMC Mandi,23.1368,87.555
+62,Solapur Apmc Market,Solapur,Maharashtra,West,Secondary APMC Mandi,20.0515,75.4139
+63,Sonipat Apmc Market,Sonipat,Haryana,North,Secondary APMC Mandi,29.5088,75.7856
+64,Surat Apmc Market,Surat,Gujarat,West,Secondary APMC Mandi,21.8087,71.0424
+65,Tiruchirappalli Apmc Market,Tiruchirappalli,Tamil Nadu,South,Secondary APMC Mandi,10.8271,78.5069
+66,Ujjain Apmc Market,Ujjain,Madhya Pradesh,Central,Secondary APMC Mandi,22.8234,78.5069
+67,Varanasi Apmc Market,Varanasi,Uttar Pradesh,North,Secondary APMC Mandi,26.8467,80.7962
+68,Vijayawada Apmc Market,Vijayawada,Andhra Pradesh,South,Secondary APMC Mandi,16.0629,79.59
+69,Visakhapatnam Apmc Market,Visakhapatnam,Andhra Pradesh,South,Secondary APMC Mandi,16.2129,79.59
+70,Warangal Apmc Market,Warangal,Telangana,South,Secondary APMC Mandi,18.5624,78.8693

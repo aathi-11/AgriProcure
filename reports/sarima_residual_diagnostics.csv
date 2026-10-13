@@ -1,0 +1,4 @@
+Crop,Model,AIC,BIC,LjungBox_Q_Lag8,LjungBox_p_Lag8,WhiteNoise_Residuals,JarqueBera_Stat,JarqueBera_p,Normal_Residuals
+Tomato,"SARIMAX(1, 0, 1)x(1, 0, 0, 13)",388.87,400.51,0.028,1.0,True,2225.767,0.0,False
+Onion,"SARIMAX(1, 0, 0)x(1, 0, 0, 13)",343.97,353.95,3.071,0.9298,True,88.842,0.0,False
+Potato,"SARIMAX(1, 0, 0)x(1, 0, 0, 13)",339.71,349.7,0.204,1.0,True,1679.787,0.0,False

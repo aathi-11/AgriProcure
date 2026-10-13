@@ -1,0 +1,4 @@
+Crop_ID,Crop,Scientific_Name,Category,Perishability_Level,Shelf_Life_Days,Storage_Type,Moisture_Sensitivity,Heat_Sensitivity,Target_Procurement_Band_Pct,Volatility_Category
+1,Tomato,Solanum lycopersicum,Perishable Vegetable,High,5,Ambient / Short Cold Chain,Extremely High (Fungal rot / Cracking),High (Sunscald / Premature softening),0.05,Severe
+2,Onion,Allium cepa,Semi-Perishable Vegetable,Medium,35,Ventilated Storage / Chawl,High (Sprouting / Basal rot),Medium (Desiccation),0.05,High
+3,Potato,Solanum tuberosum,Semi-Perishable Tuber,Low,90,Commercial Cold Storage (2-4 C),Medium (Blight / Tuber rot),Low (Under cold storage),0.03,Moderate
