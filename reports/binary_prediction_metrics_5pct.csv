@@ -1,0 +1,8 @@
+Model,Binary_Accuracy,Binary_F1,Precision,Recall,ROC_AUC
+Naive Persistence Baseline,0.5446,0.0641,0.0628,0.0653,0.5
+Logistic Regression,0.7238,0.56,0.4516,0.7368,0.797
+Random Forest,0.7026,0.5459,0.4293,0.7495,0.8031
+Tuned XGBoost,0.8069,0.5099,0.6462,0.4211,0.8121
+Tuned CatBoost,0.8,0.5075,0.615,0.4319,0.8063
+Deep SimpleRNN,0.7173,0.5472,0.4355,0.7359,0.8105
+Deep LSTM,0.7268,0.5174,0.4385,0.6308,0.7829

@@ -1,0 +1,211 @@
+Market_Name,State,Crop,Annual_Mean_Price,Price_Standard_Deviation,Price_Volatility_CV_Pct,Min_Historical_Price,Max_Historical_Price,Mean_Weekly_Arrivals_MT,Total_Annual_Arrivals_MT,Mean_Weekly_Rainfall_mm,Mean_Weekly_Temp_C,Peak_Spread_Pct
+Agra Apmc Market,Uttar Pradesh,Onion,2001.38,130.23,6.51,1781.33,2327.33,507.97,26922.22,14.62,25.23,43.87
+Agra Apmc Market,Uttar Pradesh,Potato,1534.63,81.97,5.34,1344.0,1668.0,557.64,29555.14,14.62,25.23,43.17
+Agra Apmc Market,Uttar Pradesh,Tomato,2511.56,123.86,4.93,2191.0,2780.83,269.28,14271.8,14.62,25.23,41.47
+Ahmedabad Apmc Market,Gujarat,Onion,2128.07,100.8,4.74,1861.0,2343.83,497.93,26390.24,16.05,28.74,41.0
+Ahmedabad Apmc Market,Gujarat,Potato,1577.47,81.76,5.18,1370.0,1739.67,586.15,31065.74,16.05,28.74,41.1
+Ahmedabad Apmc Market,Gujarat,Tomato,2476.54,147.58,5.96,2186.5,2878.5,266.46,14122.45,16.05,28.74,43.84
+Alwar Apmc Market,Rajasthan,Onion,2091.32,128.46,6.14,1805.5,2381.5,507.33,26888.44,13.45,24.49,42.65
+Alwar Apmc Market,Rajasthan,Potato,1643.43,71.26,4.34,1495.33,1794.83,568.16,30112.58,13.45,24.49,43.08
+Alwar Apmc Market,Rajasthan,Tomato,2249.63,135.58,6.03,1939.33,2583.83,261.51,13860.05,13.45,24.49,44.33
+Ambala Apmc Market,Haryana,Onion,2010.03,108.15,5.38,1739.5,2252.83,504.53,26739.84,13.32,23.5,43.28
+Ambala Apmc Market,Haryana,Potato,1677.19,97.48,5.81,1468.67,1876.0,560.93,29729.53,13.32,23.5,42.55
+Ambala Apmc Market,Haryana,Tomato,2374.92,121.49,5.12,2081.0,2752.5,268.52,14231.42,13.32,23.5,44.01
+Amritsar Apmc Market,Punjab,Onion,2060.59,138.95,6.74,1793.33,2416.33,502.65,26640.61,12.82,23.42,42.78
+Amritsar Apmc Market,Punjab,Potato,1628.53,94.4,5.8,1292.5,1821.0,557.48,29546.55,12.82,23.42,42.23
+Amritsar Apmc Market,Punjab,Tomato,2456.18,145.87,5.94,1949.5,2695.0,265.77,14085.75,12.82,23.42,42.75
+Balasore Apmc Market,Odisha,Onion,2010.69,105.6,5.25,1836.0,2254.83,498.74,26433.27,44.77,26.22,44.6
+Balasore Apmc Market,Odisha,Potato,1471.5,77.1,5.24,1281.5,1655.83,558.48,29599.42,44.77,26.22,42.36
+Balasore Apmc Market,Odisha,Tomato,2375.14,154.38,6.5,1906.5,2705.0,268.45,14228.06,44.77,26.22,44.95
+Bangalore Apmc Market,Karnataka,Onion,1868.46,110.12,5.89,1518.33,2108.33,503.96,26709.84,15.56,23.91,43.48
+Bangalore Apmc Market,Karnataka,Potato,1631.19,94.97,5.82,1447.5,1868.67,576.88,30574.68,15.56,23.91,42.86
+Bangalore Apmc Market,Karnataka,Tomato,2348.41,128.78,5.48,2043.33,2726.0,268.44,14227.38,15.56,23.91,43.12
+Bathinda Apmc Market,Punjab,Onion,1995.17,112.33,5.63,1765.17,2247.67,509.78,27018.55,5.93,25.05,42.82
+Bathinda Apmc Market,Punjab,Potato,1518.26,75.79,4.99,1373.0,1662.83,554.21,29373.36,5.93,25.05,42.19
+Bathinda Apmc Market,Punjab,Tomato,2490.86,130.27,5.23,2151.67,2813.17,272.15,14424.12,5.93,25.05,44.11
+Belgaum Apmc Market,Karnataka,Onion,1917.91,118.1,6.16,1631.17,2182.5,493.34,26147.17,13.16,23.75,45.27
+Belgaum Apmc Market,Karnataka,Potato,1687.51,90.21,5.35,1521.33,1906.33,571.66,30297.99,13.16,23.75,40.47
+Belgaum Apmc Market,Karnataka,Tomato,2493.51,150.82,6.05,2246.0,2800.33,265.47,14069.86,13.16,23.75,44.45
+Berhampur Apmc Market,Odisha,Onion,1887.15,102.77,5.45,1693.67,2107.33,501.92,26601.8,37.79,27.1,43.49
+Berhampur Apmc Market,Odisha,Potato,1581.43,83.14,5.26,1377.0,1767.33,555.58,29445.61,37.79,27.1,42.09
+Berhampur Apmc Market,Odisha,Tomato,2348.6,121.33,5.17,2016.17,2624.17,265.46,14069.39,37.79,27.1,45.31
+Bhagalpur Apmc Market,Bihar,Onion,1950.16,108.61,5.57,1717.17,2199.83,506.0,26818.06,21.59,25.37,43.56
+Bhagalpur Apmc Market,Bihar,Potato,1656.19,101.24,6.11,1410.0,1830.67,557.41,29542.52,21.59,25.37,42.68
+Bhagalpur Apmc Market,Bihar,Tomato,2476.26,134.67,5.44,2123.0,2739.67,266.45,14121.77,21.59,25.37,44.3
+Bhopal Apmc Market,Madhya Pradesh,Onion,2160.34,124.59,5.77,1912.5,2429.5,494.56,26211.62,17.22,25.44,44.14
+Bhopal Apmc Market,Madhya Pradesh,Potato,1471.2,91.59,6.23,1144.0,1620.83,554.71,29399.55,17.22,25.44,43.26
+Bhopal Apmc Market,Madhya Pradesh,Tomato,2317.92,135.99,5.87,2027.83,2640.83,265.3,14060.82,17.22,25.44,44.92
+Bhubaneswar Apmc Market,Odisha,Onion,1968.52,102.67,5.22,1680.83,2150.67,506.99,26870.35,54.61,26.69,45.22
+Bhubaneswar Apmc Market,Odisha,Potato,1542.99,85.75,5.56,1385.83,1721.5,566.63,30031.43,54.61,26.69,42.6
+Bhubaneswar Apmc Market,Odisha,Tomato,2456.28,137.87,5.61,2183.83,2700.83,273.47,14494.03,54.61,26.69,42.14
+Bikaner Apmc Market,Rajasthan,Onion,1941.97,93.56,4.82,1741.5,2145.67,501.58,26583.68,5.14,27.08,44.94
+Bikaner Apmc Market,Rajasthan,Potato,1481.04,94.94,6.41,1166.0,1671.17,559.9,29674.78,5.14,27.08,41.41
+Bikaner Apmc Market,Rajasthan,Tomato,2295.75,135.71,5.91,1986.83,2599.33,273.28,14483.82,5.14,27.08,45.26
+Burdwan Apmc Market,West Bengal,Onion,1866.84,118.28,6.34,1597.83,2144.0,508.9,26971.49,36.38,25.48,43.31
+Burdwan Apmc Market,West Bengal,Potato,1683.85,85.42,5.07,1523.5,1872.17,569.35,30175.78,36.38,25.48,42.38
+Burdwan Apmc Market,West Bengal,Tomato,2271.29,131.3,5.78,1918.0,2518.17,270.5,14336.48,36.38,25.48,43.56
+Chennai Apmc Market,Tamil Nadu,Onion,2008.86,110.68,5.51,1736.33,2260.33,518.35,27472.77,28.54,28.74,44.09
+Chennai Apmc Market,Tamil Nadu,Potato,1690.53,99.64,5.89,1504.33,1901.5,573.8,30411.3,28.54,28.74,43.15
+Chennai Apmc Market,Tamil Nadu,Tomato,2312.8,138.41,5.98,1944.0,2580.0,270.21,14321.33,28.54,28.74,42.26
+Chitradurga Apmc Market,Karnataka,Onion,1821.78,110.85,6.08,1573.67,2126.83,496.66,26323.01,11.05,24.21,44.24
+Chitradurga Apmc Market,Karnataka,Potato,1559.94,83.64,5.36,1381.33,1798.0,571.27,30277.2,11.05,24.21,41.22
+Chitradurga Apmc Market,Karnataka,Tomato,2438.73,140.01,5.74,2150.33,2730.0,267.62,14184.1,11.05,24.21,45.26
+Coimbatore Apmc Market,Tamil Nadu,Onion,2021.02,97.47,4.82,1680.67,2209.67,507.31,26887.17,18.89,26.39,45.31
+Coimbatore Apmc Market,Tamil Nadu,Potato,1554.48,90.11,5.8,1356.0,1768.83,578.78,30675.43,18.89,26.39,42.7
+Coimbatore Apmc Market,Tamil Nadu,Tomato,2458.53,117.92,4.8,2199.17,2696.67,264.65,14026.63,18.89,26.39,43.68
+Cuttack Apmc Market,Odisha,Onion,1857.09,93.85,5.05,1631.33,2091.17,496.91,26335.98,48.32,26.68,45.04
+Cuttack Apmc Market,Odisha,Potato,1437.54,73.99,5.15,1260.67,1584.17,563.08,29843.5,48.32,26.68,42.87
+Cuttack Apmc Market,Odisha,Tomato,2363.6,127.38,5.39,2017.83,2580.67,267.16,14159.3,48.32,26.68,43.63
+Davangere Apmc Market,Karnataka,Onion,2084.07,127.56,6.12,1832.33,2350.83,495.06,26238.11,13.49,25.63,45.34
+Davangere Apmc Market,Karnataka,Potato,1428.22,85.11,5.96,1161.0,1626.17,570.92,30258.8,13.49,25.63,42.22
+Davangere Apmc Market,Karnataka,Tomato,2405.86,157.94,6.56,2036.5,2704.67,269.86,14302.43,13.49,25.63,43.47
+Gaya Apmc Market,Bihar,Onion,2092.04,109.66,5.24,1852.67,2332.33,512.45,27159.84,21.6,25.18,43.23
+Gaya Apmc Market,Bihar,Potato,1487.11,73.38,4.93,1311.17,1621.67,560.63,29713.45,21.6,25.18,44.76
+Gaya Apmc Market,Bihar,Tomato,2262.73,129.43,5.72,2020.5,2564.83,275.73,14613.85,21.6,25.18,45.49
+Gondal Apmc Market,Gujarat,Onion,2120.3,114.0,5.38,1899.17,2379.0,501.17,26561.83,14.65,27.04,44.18
+Gondal Apmc Market,Gujarat,Potato,1508.7,78.75,5.22,1256.5,1660.17,563.07,29842.45,14.65,27.04,42.42
+Gondal Apmc Market,Gujarat,Tomato,2336.07,120.54,5.16,2088.33,2624.0,268.03,14205.4,14.65,27.04,42.29
+Guntur Apmc Market,Andhra Pradesh,Onion,1999.24,125.86,6.3,1728.5,2296.17,498.0,26393.92,14.64,28.68,44.46
+Guntur Apmc Market,Andhra Pradesh,Potato,1634.95,76.79,4.7,1418.0,1823.83,574.52,30449.42,14.64,28.68,42.55
+Guntur Apmc Market,Andhra Pradesh,Tomato,2209.49,128.59,5.82,1890.5,2516.83,270.28,14325.02,14.64,28.68,45.26
+Gwalior Apmc Market,Madhya Pradesh,Onion,1899.25,112.64,5.93,1631.17,2171.83,498.89,26441.27,17.93,25.68,44.03
+Gwalior Apmc Market,Madhya Pradesh,Potato,1508.42,83.02,5.5,1305.33,1716.5,557.94,29570.73,17.93,25.68,40.71
+Gwalior Apmc Market,Madhya Pradesh,Tomato,2361.64,138.72,5.87,2125.33,2701.67,271.69,14399.7,17.93,25.68,44.15
+Hisar Apmc Market,Haryana,Onion,1925.36,107.23,5.57,1671.5,2117.17,499.88,26493.89,5.85,25.3,43.73
+Hisar Apmc Market,Haryana,Potato,1654.83,102.68,6.21,1424.5,1858.83,583.9,30946.67,5.85,25.3,41.46
+Hisar Apmc Market,Haryana,Tomato,2414.24,138.69,5.74,2121.33,2717.83,276.79,14669.91,5.85,25.3,43.24
+Hooghly Apmc Market,West Bengal,Onion,2056.05,114.79,5.58,1842.5,2320.33,502.44,26629.44,36.38,25.86,42.6
+Hooghly Apmc Market,West Bengal,Potato,1430.92,79.79,5.58,1247.5,1628.0,571.79,30304.86,36.38,25.86,41.48
+Hooghly Apmc Market,West Bengal,Tomato,2456.32,142.46,5.8,1936.5,2697.17,265.17,14054.11,36.38,25.86,43.91
+Hubli Apmc Market,Karnataka,Onion,2009.91,110.1,5.48,1710.0,2223.83,499.05,26449.91,13.24,24.95,42.98
+Hubli Apmc Market,Karnataka,Potato,1563.47,82.78,5.29,1408.83,1790.33,551.05,29205.7,13.24,24.95,42.21
+Hubli Apmc Market,Karnataka,Tomato,2490.1,146.67,5.89,2194.5,2840.0,267.91,14199.04,13.24,24.95,43.7
+Hyderabad Apmc Market,Telangana,Onion,1934.79,107.78,5.57,1685.0,2128.33,497.77,26381.83,9.83,26.78,45.51
+Hyderabad Apmc Market,Telangana,Potato,1623.97,86.17,5.31,1473.5,1846.67,559.11,29632.91,9.83,26.78,43.49
+Hyderabad Apmc Market,Telangana,Tomato,2489.49,161.91,6.5,2131.0,2830.67,267.96,14201.84,9.83,26.78,43.19
+Indore Apmc Market,Madhya Pradesh,Onion,2025.41,115.83,5.72,1744.5,2225.33,494.71,26219.74,15.21,25.74,41.44
+Indore Apmc Market,Madhya Pradesh,Potato,1600.98,67.96,4.24,1434.67,1744.0,565.67,29980.25,15.21,25.74,40.94
+Indore Apmc Market,Madhya Pradesh,Tomato,2296.35,125.91,5.48,2020.33,2651.33,264.45,14015.96,15.21,25.74,44.43
+Jabalpur Apmc Market,Madhya Pradesh,Onion,1953.66,107.15,5.48,1737.0,2162.17,507.26,26885.01,24.48,25.29,43.2
+Jabalpur Apmc Market,Madhya Pradesh,Potato,1480.78,77.72,5.25,1194.0,1646.67,555.56,29444.9,24.48,25.29,41.7
+Jabalpur Apmc Market,Madhya Pradesh,Tomato,2261.24,122.13,5.4,1986.5,2546.67,261.56,13862.79,24.48,25.29,45.63
+Jaipur Apmc Market,Rajasthan,Onion,2105.87,122.58,5.82,1821.0,2349.83,502.19,26615.84,10.08,25.23,45.59
+Jaipur Apmc Market,Rajasthan,Potato,1610.28,86.59,5.38,1417.17,1811.17,576.81,30570.8,10.08,25.23,43.19
+Jaipur Apmc Market,Rajasthan,Tomato,2355.2,133.56,5.67,2065.17,2694.17,258.8,13716.59,10.08,25.23,44.08
+Jalandhar Apmc Market,Punjab,Onion,2014.53,109.34,5.43,1820.0,2257.67,509.53,27005.06,13.13,23.32,42.67
+Jalandhar Apmc Market,Punjab,Potato,1611.12,90.32,5.61,1409.67,1803.83,562.37,29805.46,13.13,23.32,40.4
+Jalandhar Apmc Market,Punjab,Tomato,2462.87,143.94,5.84,2106.17,2738.5,265.43,14068.05,13.13,23.32,45.43
+Jodhpur Apmc Market,Rajasthan,Onion,1989.27,109.92,5.53,1751.17,2257.5,505.53,26793.29,6.43,27.5,45.22
+Jodhpur Apmc Market,Rajasthan,Potato,1543.94,85.38,5.53,1333.67,1717.33,571.07,30266.75,6.43,27.5,41.53
+Jodhpur Apmc Market,Rajasthan,Tomato,2323.0,139.6,6.01,1965.5,2639.83,267.71,14188.78,6.43,27.5,42.65
+Kanpur Apmc Market,Uttar Pradesh,Onion,2133.37,122.7,5.75,1837.67,2503.33,500.55,26529.03,24.82,26.0,43.22
+Kanpur Apmc Market,Uttar Pradesh,Potato,1484.34,84.08,5.66,1301.5,1632.0,556.27,29482.51,24.82,26.0,41.63
+Kanpur Apmc Market,Uttar Pradesh,Tomato,2492.55,120.0,4.81,2194.17,2795.17,267.02,14152.27,24.82,26.0,43.29
+Karimnagar Apmc Market,Telangana,Onion,1986.56,93.01,4.68,1825.33,2247.67,496.87,26334.3,16.17,26.66,43.27
+Karimnagar Apmc Market,Telangana,Potato,1436.04,72.97,5.08,1265.5,1590.0,563.53,29867.05,16.17,26.66,43.53
+Karimnagar Apmc Market,Telangana,Tomato,2355.37,144.01,6.11,2082.33,2620.0,262.84,13930.53,16.17,26.66,42.04
+Karnal Apmc Market,Haryana,Onion,1906.31,106.85,5.6,1591.83,2117.67,499.87,26492.94,14.93,23.65,43.79
+Karnal Apmc Market,Haryana,Potato,1694.24,102.23,6.03,1478.83,1881.17,542.29,28741.19,14.93,23.65,42.14
+Karnal Apmc Market,Haryana,Tomato,2270.62,142.85,6.29,1969.17,2573.0,263.84,13983.32,14.93,23.65,43.32
+Kolkata Apmc Market,West Bengal,Onion,1878.32,98.32,5.23,1594.5,2033.0,505.03,26766.63,40.56,26.5,43.24
+Kolkata Apmc Market,West Bengal,Potato,1469.47,90.42,6.15,1273.67,1631.67,551.46,29227.39,40.56,26.5,40.97
+Kolkata Apmc Market,West Bengal,Tomato,2471.04,147.09,5.95,2091.83,2774.5,267.58,14181.67,40.56,26.5,44.38
+Kota Apmc Market,Rajasthan,Onion,2017.52,112.0,5.55,1773.5,2294.17,505.13,26771.94,12.48,25.73,42.47
+Kota Apmc Market,Rajasthan,Potato,1399.84,72.85,5.2,1163.5,1547.83,555.38,29435.18,12.48,25.73,42.84
+Kota Apmc Market,Rajasthan,Tomato,2398.81,142.52,5.94,2057.0,2701.83,260.82,13823.7,12.48,25.73,43.6
+Kurnool Apmc Market,Andhra Pradesh,Onion,2016.31,109.05,5.41,1791.83,2184.0,500.67,26535.72,9.43,28.35,43.8
+Kurnool Apmc Market,Andhra Pradesh,Potato,1497.76,82.59,5.51,1296.5,1702.5,551.32,29219.98,9.43,28.35,42.28
+Kurnool Apmc Market,Andhra Pradesh,Tomato,2237.59,98.04,4.38,2047.5,2437.67,270.21,14321.24,9.43,28.35,44.64
+Lasalgaon Apmc Market,Maharashtra,Onion,1848.65,111.26,6.02,1608.17,2065.33,503.64,26692.85,14.2,25.1,45.27
+Lasalgaon Apmc Market,Maharashtra,Potato,1502.36,83.48,5.56,1302.5,1697.33,560.04,29682.17,14.2,25.1,42.81
+Lasalgaon Apmc Market,Maharashtra,Tomato,2330.67,125.58,5.39,1952.0,2555.17,269.79,14299.0,14.2,25.1,44.94
+Lucknow Apmc Market,Uttar Pradesh,Onion,2123.73,117.84,5.55,1865.17,2352.33,511.83,27126.84,21.92,25.8,42.1
+Lucknow Apmc Market,Uttar Pradesh,Potato,1625.23,100.36,6.18,1444.5,1873.5,563.44,29862.31,21.92,25.8,43.53
+Lucknow Apmc Market,Uttar Pradesh,Tomato,2469.78,147.66,5.98,2076.33,2801.33,261.12,13839.32,21.92,25.8,46.03
+Ludhiana Apmc Market,Punjab,Onion,2104.82,125.38,5.96,1754.5,2359.17,508.03,26925.49,11.22,24.04,44.89
+Ludhiana Apmc Market,Punjab,Potato,1444.77,85.61,5.93,1212.5,1603.67,560.25,29693.31,11.22,24.04,42.91
+Ludhiana Apmc Market,Punjab,Tomato,2231.17,129.04,5.78,1908.0,2527.5,267.54,14179.62,11.22,24.04,47.27
+Madurai Apmc Market,Tamil Nadu,Onion,2017.22,118.88,5.89,1714.0,2253.0,500.16,26508.51,18.27,29.31,42.74
+Madurai Apmc Market,Tamil Nadu,Potato,1442.68,79.41,5.5,1279.33,1612.0,566.48,30023.27,18.27,29.31,42.11
+Madurai Apmc Market,Tamil Nadu,Tomato,2243.5,106.61,4.75,2058.33,2528.0,262.92,13934.98,18.27,29.31,46.88
+Mahbubnagar Apmc Market,Telangana,Onion,1877.97,109.45,5.83,1567.0,2128.0,496.3,26303.98,8.67,25.56,44.52
+Mahbubnagar Apmc Market,Telangana,Potato,1435.99,81.91,5.7,1192.5,1566.67,556.94,29517.61,8.67,25.56,42.93
+Mahbubnagar Apmc Market,Telangana,Tomato,2435.31,124.99,5.13,2149.5,2742.17,264.43,14015.05,8.67,25.56,46.14
+Mahuva Apmc Market,Gujarat,Onion,2117.37,118.43,5.59,1805.33,2395.33,494.61,26214.56,26.29,27.07,42.7
+Mahuva Apmc Market,Gujarat,Potato,1507.64,88.41,5.86,1262.5,1676.17,565.8,29987.39,26.29,27.07,43.31
+Mahuva Apmc Market,Gujarat,Tomato,2421.64,134.47,5.55,2180.0,2731.17,263.95,13989.32,26.29,27.07,43.89
+Malda Apmc Market,West Bengal,Onion,1993.16,126.95,6.37,1723.17,2275.0,508.28,26938.7,29.55,25.29,43.0
+Malda Apmc Market,West Bengal,Potato,1439.3,75.47,5.24,1316.0,1593.0,560.34,29697.77,29.55,25.29,42.89
+Malda Apmc Market,West Bengal,Tomato,2341.26,148.4,6.34,1951.0,2687.17,262.13,13892.94,29.55,25.29,46.02
+Meerut Apmc Market,Uttar Pradesh,Onion,2132.75,109.06,5.11,1870.83,2436.33,507.46,26895.36,17.99,23.86,43.96
+Meerut Apmc Market,Uttar Pradesh,Potato,1555.34,95.53,6.14,1349.0,1727.33,547.15,28998.88,17.99,23.86,40.97
+Meerut Apmc Market,Uttar Pradesh,Tomato,2220.91,111.23,5.01,1950.67,2442.33,268.1,14209.21,17.99,23.86,43.12
+Muzaffarpur Apmc Market,Bihar,Onion,2051.45,112.37,5.48,1788.0,2281.33,492.53,26103.87,19.44,24.88,43.99
+Muzaffarpur Apmc Market,Bihar,Potato,1462.07,83.47,5.71,1307.0,1615.83,554.97,29413.29,19.44,24.88,43.87
+Muzaffarpur Apmc Market,Bihar,Tomato,2381.73,135.07,5.67,2075.17,2699.67,269.65,14291.61,19.44,24.88,42.91
+Nagpur Apmc Market,Maharashtra,Onion,2117.96,108.94,5.14,1891.67,2458.33,492.35,26094.54,16.37,27.81,46.59
+Nagpur Apmc Market,Maharashtra,Potato,1545.09,96.54,6.25,1346.83,1737.5,577.67,30616.5,16.37,27.81,42.59
+Nagpur Apmc Market,Maharashtra,Tomato,2482.62,158.6,6.39,2101.17,2815.17,263.53,13967.22,16.37,27.81,45.94
+Nizamabad Apmc Market,Telangana,Onion,1932.86,128.7,6.66,1698.67,2201.67,505.27,26779.44,13.28,26.73,44.93
+Nizamabad Apmc Market,Telangana,Potato,1433.76,66.85,4.66,1270.5,1599.33,569.82,30200.39,13.28,26.73,42.93
+Nizamabad Apmc Market,Telangana,Tomato,2219.64,103.83,4.68,2030.83,2523.67,271.17,14371.97,13.28,26.73,43.75
+Panipat Apmc Market,Haryana,Onion,1981.01,96.45,4.87,1769.83,2297.17,500.39,26520.53,15.82,23.83,43.35
+Panipat Apmc Market,Haryana,Potato,1423.83,84.57,5.94,1220.67,1560.5,569.57,30187.28,15.82,23.83,44.32
+Panipat Apmc Market,Haryana,Tomato,2285.42,117.18,5.13,2050.0,2587.83,271.45,14386.9,15.82,23.83,46.37
+Patiala Apmc Market,Punjab,Onion,1981.74,108.04,5.45,1767.5,2159.67,494.64,26216.03,9.63,24.17,42.8
+Patiala Apmc Market,Punjab,Potato,1514.02,81.7,5.4,1272.0,1682.17,570.22,30221.69,9.63,24.17,42.05
+Patiala Apmc Market,Punjab,Tomato,2279.09,136.73,6.0,1968.5,2638.5,271.62,14396.11,9.63,24.17,43.47
+Patna Apmc Market,Bihar,Onion,2077.49,135.63,6.53,1697.67,2319.5,511.15,27090.9,19.72,25.57,43.76
+Patna Apmc Market,Bihar,Potato,1613.61,90.48,5.61,1381.5,1771.17,562.75,29825.79,19.72,25.57,40.13
+Patna Apmc Market,Bihar,Tomato,2484.67,149.54,6.02,2149.67,2779.83,263.66,13973.79,19.72,25.57,44.82
+Pimpalgaon Apmc Market,Maharashtra,Onion,2050.57,113.01,5.51,1768.33,2307.17,505.65,26799.47,14.76,24.44,44.88
+Pimpalgaon Apmc Market,Maharashtra,Potato,1547.93,95.77,6.19,1355.0,1716.17,558.52,29601.51,14.76,24.44,40.71
+Pimpalgaon Apmc Market,Maharashtra,Tomato,2408.12,141.78,5.89,2045.83,2722.83,265.3,14060.99,14.76,24.44,43.66
+Pune Apmc Market,Maharashtra,Onion,1876.11,101.81,5.43,1665.5,2045.0,493.08,26133.05,15.7,25.46,43.58
+Pune Apmc Market,Maharashtra,Potato,1622.75,83.75,5.16,1439.5,1813.83,544.83,28875.81,15.7,25.46,43.06
+Pune Apmc Market,Maharashtra,Tomato,2269.42,132.64,5.84,2011.33,2581.17,264.95,14042.41,15.7,25.46,45.42
+Purnia Apmc Market,Bihar,Onion,2045.23,115.59,5.65,1730.5,2245.67,509.05,26979.54,27.21,24.81,41.33
+Purnia Apmc Market,Bihar,Potato,1609.24,99.61,6.19,1409.0,1814.33,561.16,29741.62,27.21,24.81,42.43
+Purnia Apmc Market,Bihar,Tomato,2495.36,139.05,5.57,2207.33,2771.33,266.64,14131.99,27.21,24.81,44.17
+Rajahmundry Apmc Market,Andhra Pradesh,Onion,1911.79,111.3,5.82,1721.0,2162.17,499.43,26469.94,22.62,27.74,42.73
+Rajahmundry Apmc Market,Andhra Pradesh,Potato,1579.91,88.0,5.57,1326.33,1746.33,580.41,30761.49,22.62,27.74,40.25
+Rajahmundry Apmc Market,Andhra Pradesh,Tomato,2307.8,123.32,5.34,2075.33,2574.83,267.96,14201.88,22.62,27.74,46.35
+Rajkot Apmc Market,Gujarat,Onion,1899.88,102.09,5.37,1633.5,2105.67,513.41,27210.66,14.07,27.18,44.71
+Rajkot Apmc Market,Gujarat,Potato,1645.74,90.49,5.5,1448.83,1810.17,562.61,29818.38,14.07,27.18,41.84
+Rajkot Apmc Market,Gujarat,Tomato,2472.7,155.85,6.3,2141.5,2818.5,263.59,13970.27,14.07,27.18,44.51
+Salem Apmc Market,Tamil Nadu,Onion,2002.49,101.94,5.09,1762.0,2268.5,499.85,26492.22,13.47,27.93,43.56
+Salem Apmc Market,Tamil Nadu,Potato,1688.65,95.76,5.67,1375.0,1875.5,575.16,30483.43,13.47,27.93,43.98
+Salem Apmc Market,Tamil Nadu,Tomato,2357.5,135.55,5.75,1974.67,2680.0,267.85,14196.16,13.47,27.93,46.89
+Sambalpur Apmc Market,Odisha,Onion,2054.72,129.58,6.31,1699.67,2340.33,503.37,26678.6,35.38,26.16,42.96
+Sambalpur Apmc Market,Odisha,Potato,1518.27,84.51,5.57,1352.67,1700.0,565.32,29961.78,35.38,26.16,40.48
+Sambalpur Apmc Market,Odisha,Tomato,2433.8,140.16,5.76,2137.83,2721.67,273.86,14514.47,35.38,26.16,43.89
+Siliguri Apmc Market,West Bengal,Onion,2110.38,124.18,5.88,1857.17,2346.17,506.53,26846.18,56.13,24.14,45.61
+Siliguri Apmc Market,West Bengal,Potato,1575.82,88.81,5.64,1413.5,1773.0,550.69,29186.49,56.13,24.14,42.11
+Siliguri Apmc Market,West Bengal,Tomato,2371.97,112.78,4.75,2145.17,2590.5,260.93,13829.22,56.13,24.14,45.4
+Solapur Apmc Market,Maharashtra,Onion,2035.64,92.47,4.54,1811.67,2233.67,505.76,26805.33,12.02,27.62,46.15
+Solapur Apmc Market,Maharashtra,Potato,1598.16,78.15,4.89,1402.5,1727.5,567.21,30062.07,12.02,27.62,42.04
+Solapur Apmc Market,Maharashtra,Tomato,2504.24,133.26,5.32,2163.33,2760.17,269.65,14291.28,12.02,27.62,43.85
+Sonipat Apmc Market,Haryana,Onion,2008.84,112.44,5.6,1752.83,2241.67,506.67,26853.35,13.19,23.87,41.69
+Sonipat Apmc Market,Haryana,Potato,1694.36,98.89,5.84,1483.67,1884.0,563.23,29851.16,13.19,23.87,42.86
+Sonipat Apmc Market,Haryana,Tomato,2279.9,138.52,6.08,1925.5,2661.83,263.03,13940.37,13.19,23.87,44.82
+Surat Apmc Market,Gujarat,Onion,1925.63,98.17,5.1,1704.17,2155.83,507.83,26915.05,28.0,27.74,46.04
+Surat Apmc Market,Gujarat,Potato,1539.96,71.88,4.67,1370.0,1678.17,553.48,29334.29,28.0,27.74,42.2
+Surat Apmc Market,Gujarat,Tomato,2377.31,135.81,5.71,2089.5,2604.67,270.04,14311.89,28.0,27.74,47.24
+Tiruchirappalli Apmc Market,Tamil Nadu,Onion,1843.9,95.77,5.19,1513.0,2030.17,509.91,27025.45,18.86,28.89,43.22
+Tiruchirappalli Apmc Market,Tamil Nadu,Potato,1588.89,82.67,5.2,1383.0,1793.17,563.78,29880.09,18.86,28.89,42.13
+Tiruchirappalli Apmc Market,Tamil Nadu,Tomato,2458.94,134.48,5.47,2172.67,2774.5,260.71,13817.63,18.86,28.89,43.39
+Ujjain Apmc Market,Madhya Pradesh,Onion,1849.56,93.54,5.06,1676.83,2091.67,497.99,26393.24,15.98,25.13,44.37
+Ujjain Apmc Market,Madhya Pradesh,Potato,1461.54,79.56,5.44,1297.17,1655.33,569.61,30189.1,15.98,25.13,43.07
+Ujjain Apmc Market,Madhya Pradesh,Tomato,2256.31,133.21,5.9,1858.67,2531.5,266.84,14142.75,15.98,25.13,46.83
+Varanasi Apmc Market,Uttar Pradesh,Onion,2004.72,114.89,5.73,1770.5,2323.67,504.74,26751.25,19.92,26.02,44.87
+Varanasi Apmc Market,Uttar Pradesh,Potato,1399.52,82.66,5.91,1189.33,1541.0,558.05,29576.41,19.92,26.02,43.12
+Varanasi Apmc Market,Uttar Pradesh,Tomato,2458.99,146.77,5.97,2020.5,2731.67,266.53,14126.25,19.92,26.02,45.32
+Vijayawada Apmc Market,Andhra Pradesh,Onion,1825.44,85.0,4.66,1609.33,2007.5,493.94,26178.99,14.06,28.86,44.99
+Vijayawada Apmc Market,Andhra Pradesh,Potato,1668.13,97.37,5.84,1450.5,1844.83,565.91,29993.34,14.06,28.86,41.83
+Vijayawada Apmc Market,Andhra Pradesh,Tomato,2337.54,142.06,6.08,2068.5,2669.83,269.25,14270.12,14.06,28.86,44.28
+Visakhapatnam Apmc Market,Andhra Pradesh,Onion,2123.07,112.8,5.31,1900.17,2375.67,511.38,27102.99,27.34,27.45,44.36
+Visakhapatnam Apmc Market,Andhra Pradesh,Potato,1526.13,83.68,5.48,1366.33,1694.33,561.56,29762.71,27.34,27.45,41.48
+Visakhapatnam Apmc Market,Andhra Pradesh,Tomato,2410.2,136.0,5.64,2181.17,2789.0,270.29,14325.54,27.34,27.45,45.57
+Warangal Apmc Market,Telangana,Onion,1853.4,95.7,5.16,1651.83,2026.17,508.19,26934.23,15.37,27.41,43.53
+Warangal Apmc Market,Telangana,Potato,1628.51,77.03,4.73,1477.83,1773.67,563.99,29891.59,15.37,27.41,41.49
+Warangal Apmc Market,Telangana,Tomato,2327.13,148.84,6.4,1997.5,2626.17,265.98,14096.73,15.37,27.41,43.96
