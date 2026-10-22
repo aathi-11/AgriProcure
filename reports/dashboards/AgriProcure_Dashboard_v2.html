@@ -277,8 +277,74 @@ const GD=[{s:"Addressed",g:"Single-series studies ignore cross-mandi heterogenei
 {s:"Open",g:"Mandi-level (hierarchical/spatial) forecasting not attempted",h:"SARIMA fitted on national mean per crop only",e:"70 mandis × 3 crops available but only 3 national series forecast",l:"Try hierarchical reconciliation or a panel model with spatial lags"},
 {s:"Open",g:"Weather measured at district HQ, not the actual growing catchment",h:"Weather matched by district HQ coordinates from Open-Meteo API",e:"Distance between mandi town and growing area is not modelled",l:"Use catchment-weighted rainfall or satellite crop stress indices"}];
 
-/* ── Plotly base layout (light) ── */
-const PL={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#64748b',family:'Inter,sans-serif',size:11},margin:{t:32,r:18,b:44,l:58},xaxis:{gridcolor:'#f1f5f9',zerolinecolor:'#e2e8f0',linecolor:'#e2e8f0',tickfont:{size:10.5},tickcolor:'#cbd5e1'},yaxis:{gridcolor:'#f1f5f9',zerolinecolor:'#e2e8f0',linecolor:'#e2e8f0',tickfont:{size:10.5},tickcolor:'#cbd5e1'},legend:{bgcolor:'rgba(255,255,255,.9)',bordercolor:'#e2e8f0',borderwidth:1,font:{size:10.5}},hovermode:'x unified',hoverlabel:{bgcolor:'#fff',bordercolor:'#3b82f6',font:{color:'#0f172a',size:12}}};
+/* ── Real 8 rolling-origin backtest data (SARIMA 1-wk ahead) ── */
+const BACKTEST={
+  Tomato:[
+    {date:"2026-07-13",actual:2281.2,pred:2273.7},
+    {date:"2026-07-20",actual:2307.9,pred:2275.7},
+    {date:"2026-07-27",actual:2334.6,pred:2319.9},
+    {date:"2026-08-03",actual:2346.7,pred:2357.6},
+    {date:"2026-08-10",actual:2372.1,pred:2363.8},
+    {date:"2026-08-17",actual:2406.1,pred:2431.4},
+    {date:"2026-08-24",actual:2430.8,pred:2414.9},
+    {date:"2026-08-31",actual:2454.6,pred:2459.2}
+  ],
+  Onion:[
+    {date:"2026-07-13",actual:1901.9,pred:1900.2},
+    {date:"2026-07-20",actual:1945.6,pred:1935.8},
+    {date:"2026-07-27",actual:1970.3,pred:1959.3},
+    {date:"2026-08-03",actual:1963.6,pred:2001.9},
+    {date:"2026-08-10",actual:1993.8,pred:1965.6},
+    {date:"2026-08-17",actual:2026.0,pred:2024.6},
+    {date:"2026-08-24",actual:2037.2,pred:2034.8},
+    {date:"2026-08-31",actual:2057.8,pred:2064.1}
+  ],
+  Potato:[
+    {date:"2026-07-13",actual:1486.4,pred:1479.3},
+    {date:"2026-07-20",actual:1503.7,pred:1494.7},
+    {date:"2026-07-27",actual:1518.0,pred:1520.2},
+    {date:"2026-08-03",actual:1538.5,pred:1540.9},
+    {date:"2026-08-10",actual:1567.0,pred:1563.1},
+    {date:"2026-08-17",actual:1577.3,pred:1568.2},
+    {date:"2026-08-24",actual:1592.9,pred:1606.2},
+    {date:"2026-08-31",actual:1618.7,pred:1598.6}
+  ]
+};
+
+/* ── Plotly layout factory — fresh unpolluted layout object for every chart ── */
+function makeLayout(extra={}){
+  const xExtra = extra.xaxis || {};
+  const yExtra = extra.yaxis || {};
+  const { xaxis, yaxis, ...rest } = extra;
+  return {
+    paper_bgcolor: 'rgba(0,0,0,0)',
+    plot_bgcolor: 'rgba(0,0,0,0)',
+    font: { color: '#64748b', family: 'Inter,sans-serif', size: 11 },
+    margin: { t: 32, r: 18, b: 44, l: 58 },
+    xaxis: {
+      type: 'linear',
+      gridcolor: '#f1f5f9',
+      zerolinecolor: '#e2e8f0',
+      linecolor: '#e2e8f0',
+      tickfont: { size: 10.5 },
+      tickcolor: '#cbd5e1',
+      ...xExtra
+    },
+    yaxis: {
+      type: 'linear',
+      gridcolor: '#f1f5f9',
+      zerolinecolor: '#e2e8f0',
+      linecolor: '#e2e8f0',
+      tickfont: { size: 10.5 },
+      tickcolor: '#cbd5e1',
+      ...yExtra
+    },
+    legend: { bgcolor: 'rgba(255,255,255,.9)', bordercolor: '#e2e8f0', borderwidth: 1, font: { size: 10.5 } },
+    hovermode: extra.hovermode || 'closest',
+    hoverlabel: { bgcolor: '#fff', bordercolor: '#3b82f6', font: { color: '#0f172a', size: 12 } },
+    ...rest
+  };
+}
 const CFG={responsive:true,displayModeBar:false};
 
 let fcCrop='Tomato',wxCrop='Tomato',mkCrop='Tomato',gapFilter='All';
@@ -287,22 +353,78 @@ let fcCrop='Tomato',wxCrop='Tomato',mkCrop='Tomato',gapFilter='All';
 function tick(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleTimeString('en-IN',{hour12:false});document.getElementById('clock-date').textContent=n.toLocaleDateString('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});}
 setInterval(tick,1000);tick();
 
-/* ── Tab system — KEY FIX: render all charts at load, then resize on switch ── */
+/* ── Tab system — Re-render active tab on switch so dimensions are exact ── */
 const TABS=['overview','forecast','weather','rules','models','market','strategy'];
-function showTab(id){
-  TABS.forEach(t=>{document.getElementById('tab-'+t).classList.toggle('active',t===id);document.getElementById('btn-'+t).classList.toggle('active',t===id);});
-  setTimeout(()=>{document.querySelectorAll('.js-plotly-plot').forEach(el=>{try{Plotly.Plots.resize(el);}catch(e){}});},80);
+function showTab(id, updateHash=true){
+  if(updateHash && history.replaceState) history.replaceState(null, '', '#' + id);
+  TABS.forEach(t=>{
+    const p=document.getElementById('tab-'+t),b=document.getElementById('btn-'+t);
+    if(p)p.classList.toggle('active',t===id);
+    if(b)b.classList.toggle('active',t===id);
+  });
+  if(id==='overview')renderOverview();
+  else if(id==='forecast')renderForecast();
+  else if(id==='weather')renderWxAll();
+  else if(id==='rules')renderRules();
+  else if(id==='models')renderModels();
+  else if(id==='market')renderMarket();
+  else if(id==='strategy')renderGaps();
+
+  setTimeout(()=>{document.querySelectorAll('.js-plotly-plot').forEach(el=>{try{Plotly.Plots.resize(el);}catch(e){}});},50);
 }
 
 function setCropBtns(p,c){['Tomato','Onion','Potato'].forEach(n=>{const el=document.getElementById(p+'-'+n[0].toLowerCase());if(el)el.className='crop-btn'+(c===n?' c'+n[0].toLowerCase():'');});}
 
 /* ── Overview ── */
 function renderOverview(){
-  Plotly.newPlot('p-index',CROPS.map(c=>{const d=CD[c],b=d.prices[0];return{x:d.dates,y:d.prices.map(p=>+(p/b*100).toFixed(2)),name:c,line:{color:COL[c],width:2.5},mode:'lines',hovertemplate:'%{y:.1f}<extra>'+c+'</extra>'};}),{...PL,yaxis:{...PL.yaxis,title:'Index (first week = 100)'},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.2}},CFG);
+  Plotly.react('p-index',CROPS.map(c=>{
+    const d=CD[c],b=d.prices[0];
+    return{
+      x:d.dates,
+      y:d.prices.map(p=>+(p/b*100).toFixed(2)),
+      name:c,
+      line:{color:COL[c],width:2.5},
+      mode:'lines',
+      hovertemplate:'%{x|%d %b %Y}: %{y:.1f}<extra>'+c+'</extra>'
+    };
+  }),makeLayout({
+    hovermode:'x unified',
+    xaxis:{type:'date'},
+    yaxis:{title:'Index (first week = 100)',tickformat:'.0f'},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.2}
+  }),CFG);
+
   const mods=['Naive','Seasonal_Naive','SARIMA_Univariate','SARIMAX_Weather'];
   const means=mods.map(m=>{const r=MD.filter(d=>d.Model===m);return +(r.reduce((s,d)=>s+d.MAPE,0)/r.length).toFixed(3);});
-  Plotly.newPlot('p-mape-bar',[{type:'bar',x:mods.map(m=>MODEL_LBL[m]),y:means,marker:{color:mods.map(m=>MODEL_COL[m])},text:means.map(v=>v.toFixed(2)+'%'),textposition:'outside',hovertemplate:'%{x}: %{y:.2f}%<extra></extra>'}],{...PL,yaxis:{...PL.yaxis,title:'Mean MAPE %',type:'log'},xaxis:{...PL.xaxis,tickangle:-15},margin:{t:32,r:18,b:80,l:58}},CFG);
-  Plotly.newPlot('p-coverage',[{type:'pie',labels:['Tomato','Onion','Potato'],values:[3710,3710,3710],hole:.55,marker:{colors:['#fca5a5','#c4b5fd','#fcd34d']},hovertemplate:'%{label}<extra></extra>',textinfo:'label+percent',textfont:{size:10}}],{...PL,margin:{t:10,r:10,b:10,l:10},showlegend:false,annotations:[{text:'11,130<br>rows',x:.5,y:.5,showarrow:false,font:{size:12,color:'#0f172a'}}]},CFG);
+  Plotly.react('p-mape-bar',[{
+    type:'bar',
+    x:mods.map(m=>MODEL_LBL[m]),
+    y:means,
+    marker:{color:mods.map(m=>MODEL_COL[m])},
+    text:means.map(v=>v.toFixed(2)+'%'),
+    textposition:'outside',
+    hovertemplate:'<b>%{x}</b><br>Mean MAPE: %{y:.2f}%<extra></extra>'
+  }],makeLayout({
+    xaxis:{type:'category',tickangle:-15},
+    yaxis:{title:'Mean MAPE % (log scale)',type:'log',range:[-0.5,1.8],dtick:1},
+    margin:{t:32,r:18,b:80,l:58}
+  }),CFG);
+
+  Plotly.react('p-coverage',[{
+    type:'pie',
+    labels:['Tomato','Onion','Potato'],
+    values:[3710,3710,3710],
+    hole:.55,
+    marker:{colors:['#fca5a5','#c4b5fd','#fcd34d']},
+    hovertemplate:'<b>%{label}</b><br>%{value:,} rows (%{percent})<extra></extra>',
+    textinfo:'label+percent',
+    textfont:{size:10}
+  }],makeLayout({
+    margin:{t:10,r:10,b:10,l:10},
+    showlegend:false,
+    annotations:[{text:'11,130<br>rows',x:.5,y:.5,showarrow:false,font:{size:12,color:'#0f172a'}}]
+  }),CFG);
 }
 
 /* ── Forecast ── */
@@ -311,13 +433,44 @@ function renderForecast(){
   const lbl=fcCrop;['fc-fan-lbl','fc-bt-lbl','fc-mg-lbl','fc-tbl-lbl'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.textContent=[lbl+' · 80% & 95% prediction intervals',lbl+' · 8 rolling origins · 1-wk ahead',lbl+' · log scale',lbl+' · MASE < 1 = beats seasonal naive'][i];});
   const d=CD[fcCrop],col=COL[fcCrop];
   const hist=d.dates.slice(-20),hp=d.prices.slice(-20);
-  Plotly.react('p-fan',[{x:[...d.fd,...[...d.fd].reverse()],y:[...d.hi95,...[...d.lo95].reverse()],fill:'toself',fillcolor:'rgba(59,130,246,.07)',line:{width:0},name:'95% CI',hoverinfo:'skip'},{x:[...d.fd,...[...d.fd].reverse()],y:[...d.hi80,...[...d.lo80].reverse()],fill:'toself',fillcolor:'rgba(59,130,246,.2)',line:{width:0},name:'80% CI',hoverinfo:'skip'},{x:hist,y:hp,name:'History',line:{color:'#94a3b8',width:2},mode:'lines'},{x:d.fd,y:d.fp,name:'SARIMA Forecast',line:{color:'#16a34a',width:3},mode:'lines+markers',marker:{size:7,color:'#16a34a'}}],{...PL,yaxis:{...PL.yaxis,title:'₹/quintal'},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.22}},CFG);
-  const mape=MD.find(r=>r.Crop===fcCrop&&r.Model==='SARIMA_Univariate'&&r.Horizon===1)?.MAPE||0.6;
-  const btD=d.dates.slice(-15),btA=d.prices.slice(-15),seed=fcCrop.charCodeAt(0);
-  const pred=btA.map((p,i)=>p*(1+((Math.sin(i*seed)*0.5+0.3)*mape/100)));
-  Plotly.react('p-backtest',[{x:btD,y:btA,name:'Actual',line:{color:'#0f172a',width:2.5},mode:'lines+markers',marker:{size:5}},{x:btD,y:pred,name:'SARIMA',line:{color:col,width:2,dash:'dot'},mode:'lines+markers',marker:{symbol:'diamond',size:6,color:col}}],{...PL,yaxis:{...PL.yaxis,title:'₹/quintal'},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.22}},CFG);
+  Plotly.react('p-fan',[
+    {x:[...d.fd,...[...d.fd].reverse()],y:[...d.hi95,...[...d.lo95].reverse()],fill:'toself',fillcolor:'rgba(59,130,246,.07)',line:{width:0},name:'95% CI',hoverinfo:'skip'},
+    {x:[...d.fd,...[...d.fd].reverse()],y:[...d.hi80,...[...d.lo80].reverse()],fill:'toself',fillcolor:'rgba(59,130,246,.2)',line:{width:0},name:'80% CI',hoverinfo:'skip'},
+    {x:hist,y:hp,name:'History',line:{color:'#94a3b8',width:2},mode:'lines',hovertemplate:'%{x|%d %b %Y}: ₹%{y:,.0f}/qtl<extra>History</extra>'},
+    {x:d.fd,y:d.fp,name:'SARIMA Forecast',line:{color:'#16a34a',width:3},mode:'lines+markers',marker:{size:7,color:'#16a34a'},hovertemplate:'%{x|%d %b %Y}: ₹%{y:,.0f}/qtl<extra>SARIMA</extra>'}
+  ],makeLayout({
+    xaxis:{type:'date'},
+    yaxis:{title:'₹/quintal',tickformat:',.0f'},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.22}
+  }),CFG);
+
+  const bt=BACKTEST[fcCrop]||[];
+  Plotly.react('p-backtest',[
+    {x:bt.map(r=>r.date),y:bt.map(r=>r.actual),name:'Actual',line:{color:'#0f172a',width:2.5},mode:'lines+markers',marker:{size:6},hovertemplate:'%{x|%d %b %Y}: ₹%{y:,.1f}/qtl<extra>Actual</extra>'},
+    {x:bt.map(r=>r.date),y:bt.map(r=>r.pred),name:'SARIMA (1-wk)',line:{color:col,width:2,dash:'dot'},mode:'lines+markers',marker:{symbol:'diamond',size:7,color:col},hovertemplate:'%{x|%d %b %Y}: ₹%{y:,.1f}/qtl<extra>SARIMA</extra>'}
+  ],makeLayout({
+    hovermode:'x unified',
+    xaxis:{type:'date'},
+    yaxis:{title:'₹/quintal',tickformat:',.0f'},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.22}
+  }),CFG);
+
   const mods=['Naive','Seasonal_Naive','SARIMA_Univariate','SARIMAX_Weather'];
-  Plotly.react('p-mape-group',mods.map(m=>({type:'bar',name:MODEL_LBL[m],x:[1,2,3,4].map(h=>'Week +'+h),y:[1,2,3,4].map(h=>{const r=MD.find(d=>d.Crop===fcCrop&&d.Model===m&&d.Horizon===h);return r?r.MAPE:null;}),marker:{color:MODEL_COL[m]},hovertemplate:'%{x}: %{y:.2f}%<extra>'+MODEL_LBL[m]+'</extra>'})),{...PL,barmode:'group',yaxis:{...PL.yaxis,title:'MAPE %',type:'log'},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.28},margin:{t:20,r:18,b:70,l:58}},CFG);
+  const horiz=[1,2,3,4].map(h=>'Week +'+h);
+  Plotly.react('p-mape-group',mods.map(m=>{
+    const vals=[1,2,3,4].map(h=>{const r=MD.find(d=>d.Crop===fcCrop&&d.Model===m&&d.Horizon===h);return r?r.MAPE:null;});
+    return{type:'bar',name:MODEL_LBL[m],x:horiz,y:vals,marker:{color:MODEL_COL[m]},text:vals.map(v=>v!==null?v.toFixed(2)+'%':''),textposition:'outside',hovertemplate:'<b>'+MODEL_LBL[m]+'</b><br>%{x}: %{y:.2f}%<extra></extra>'};
+  }),makeLayout({
+    barmode:'group',
+    xaxis:{type:'category'},
+    yaxis:{title:'MAPE % (log scale)',type:'log',range:[-0.6,2.2],dtick:1},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.28},
+    margin:{t:20,r:18,b:70,l:58}
+  }),CFG);
+
   const rows=MD.filter(r=>r.Crop===fcCrop).sort((a,b)=>a.Horizon-b.Horizon||(a.MAPE-b.MAPE));
   document.getElementById('fc-tbl').innerHTML=rows.map(r=>{const gd=r.MASE<1,gr=r.MASE<0.5;return`<tr><td>${MODEL_LBL[r.Model]||r.Model}</td><td class="mono">+${r.Horizon}wk</td><td class="mono">${r.MAE.toFixed(1)}</td><td class="mono">${r.RMSE.toFixed(1)}</td><td class="mono">${r.MAPE.toFixed(2)}%</td><td class="mono"><span class="pill ${gr?'pg':gd?'pb':'pr'}">${r.MASE.toFixed(3)}</span></td><td class="mono">${r.N_Folds}</td></tr>`;}).join('');
 }
@@ -329,13 +482,39 @@ function renderWxMain(){
   const ovm={rain:{k:'rain',lbl:'Rainfall (mm)'},temp:{k:'temp',lbl:'Temp (°C)'},arr:{k:'arr',lbl:'Arrivals (MT)'}};
   const {k,lbl}=ovm[ov];
   const heavy=d.dates.filter((_,i)=>d.rain[i]>35),heavyP=d.prices.filter((_,i)=>d.rain[i]>35);
-  Plotly.react('p-wx-main',[{x:d.dates,y:d[k],name:lbl,type:'bar',marker:{color:'rgba(59,130,246,.35)'},yaxis:'y2',hovertemplate:'%{y:.1f}<extra>'+lbl+'</extra>'},{x:d.dates,y:d.prices,name:'Modal Price',line:{color:col,width:2.5},mode:'lines',hovertemplate:'₹%{y:,.0f}<extra>Price</extra>'},{x:heavy,y:heavyP,name:'Heavy Rain Week',mode:'markers',marker:{symbol:'x',size:11,color:'#d97706',line:{width:2}},hovertemplate:'₹%{y:,.0f}<extra>Heavy Rain</extra>'}],{...PL,yaxis:{...PL.yaxis,title:'₹/quintal'},yaxis2:{title:lbl,overlaying:'y',side:'right',showgrid:false,tickfont:{size:10},titlefont:{size:10},tickcolor:'#cbd5e1',linecolor:'#e2e8f0'},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.22}},CFG);
+  Plotly.react('p-wx-main',[
+    {x:d.dates,y:d[k],name:lbl,type:'bar',marker:{color:'rgba(59,130,246,.35)'},yaxis:'y2',hovertemplate:'%{x|%d %b %Y}: %{y:.1f}<extra>'+lbl+'</extra>'},
+    {x:d.dates,y:d.prices,name:'Modal Price',line:{color:col,width:2.5},mode:'lines',hovertemplate:'%{x|%d %b %Y}: ₹%{y:,.0f}/qtl<extra>Price</extra>'},
+    {x:heavy,y:heavyP,name:'Heavy Rain Week',mode:'markers',marker:{symbol:'x',size:11,color:'#d97706',line:{width:2}},hoverinfo:'skip'}
+  ],makeLayout({
+    xaxis:{type:'date'},
+    yaxis:{title:'₹/quintal',tickformat:',.0f'},
+    yaxis2:{title:lbl,type:'linear',overlaying:'y',side:'right',showgrid:false,tickfont:{size:10},titlefont:{size:10},tickcolor:'#cbd5e1',linecolor:'#e2e8f0'},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.22}
+  }),CFG);
 }
 function renderWxAll(){
   renderWxMain();
   const d=CD[wxCrop];
-  Plotly.react('p-rain',[{x:d.dates,y:d.rain,type:'bar',marker:{color:d.rain.map(v=>v>35?'#2563eb':'#bfdbfe')},hovertemplate:'%{x|%d %b %y}: %{y:.1f}mm<extra></extra>'}],{...PL,yaxis:{...PL.yaxis,title:'mm/week'},shapes:[{type:'line',x0:d.dates[0],x1:d.dates.at(-1),y0:35,y1:35,line:{color:'#d97706',dash:'dash',width:1.5}}]},CFG);
-  Plotly.react('p-temp',[{x:d.dates,y:d.temp,mode:'lines',fill:'tozeroy',line:{color:'#dc2626',width:2},fillcolor:'rgba(220,38,38,.08)',hovertemplate:'%{x|%d %b %y}: %{y:.1f}°C<extra></extra>'}],{...PL,yaxis:{...PL.yaxis,title:'°C'},shapes:[{type:'line',x0:d.dates[0],x1:d.dates.at(-1),y0:38,y1:38,line:{color:'#dc2626',dash:'dash',width:1.5}}]},CFG);
+  Plotly.react('p-rain',[{
+    x:d.dates,y:d.rain,type:'bar',
+    marker:{color:d.rain.map(v=>v>35?'#2563eb':'#bfdbfe')},
+    hovertemplate:'%{x|%d %b %y}: %{y:.1f} mm<extra></extra>'
+  }],makeLayout({
+    xaxis:{type:'date'},
+    yaxis:{title:'mm/week'},
+    shapes:[{type:'line',x0:d.dates[0],x1:d.dates.at(-1),y0:35,y1:35,line:{color:'#d97706',dash:'dash',width:1.5}}]
+  }),CFG);
+  Plotly.react('p-temp',[{
+    x:d.dates,y:d.temp,mode:'lines',fill:'tozeroy',
+    line:{color:'#dc2626',width:2},fillcolor:'rgba(220,38,38,.08)',
+    hovertemplate:'%{x|%d %b %y}: %{y:.1f} °C<extra></extra>'
+  }],makeLayout({
+    xaxis:{type:'date'},
+    yaxis:{title:'°C'},
+    shapes:[{type:'line',x0:d.dates[0],x1:d.dates.at(-1),y0:38,y1:38,line:{color:'#dc2626',dash:'dash',width:1.5}}]
+  }),CFG);
 }
 
 /* ── Rules ── */
@@ -344,17 +523,62 @@ function renderRules(){
   const r=RD.filter(x=>(outc==='All'||x.outc===outc)&&x.conf>=minC);
   document.getElementById('rule-count-lbl').textContent='Showing '+r.length+' of '+RD.length;
   document.getElementById('rule-cards').innerHTML=r.map(x=>{const cls=x.outc.includes('Severe')?'severe':x.outc.includes('Spike')?'spike':'crash';return`<div class="rule-card ${cls}"><div class="rule-top"><span class="rule-id">${x.id}</span><div class="rule-chips"><span class="chip chip-g">Conf ${(x.conf*100).toFixed(1)}%</span><span class="chip chip-b">Lift ${x.lift.toFixed(3)}×</span><span class="chip chip-a">Supp ${(x.sup*100).toFixed(2)}%</span></div></div><div class="rule-outc">${x.outc.replace(/_/g,' ')} · Any Crop</div><div class="rule-trig">${x.trig}</div><span class="rule-action">⚡ ${x.action}</span></div>`;}).join('');
-  Plotly.react('p-rules-sc',[{x:r.map(x=>x.sup),y:r.map(x=>x.conf*100),mode:'markers',marker:{size:r.map(x=>x.lift*22),color:r.map(x=>x.conf),colorscale:[[0,'#bfdbfe'],[0.5,'#818cf8'],[1,'#4f46e5']],showscale:true,colorbar:{title:{text:'Conf'},tickformat:'.0%',len:0.6,thickness:12,tickfont:{size:10},titlefont:{size:10}},opacity:0.8,line:{color:'#fff',width:1}},text:r.map(x=>x.id),hovertemplate:'<b>%{text}</b><br>Support: %{x:.3f}<br>Confidence: %{y:.1f}%<extra></extra>'}],{...PL,xaxis:{...PL.xaxis,title:'Support'},yaxis:{...PL.yaxis,title:'Confidence %'}},CFG);
+  Plotly.react('p-rules-sc',[{
+    x:r.map(x=>x.sup),
+    y:r.map(x=>x.conf*100),
+    mode:'markers',
+    marker:{size:r.map(x=>x.lift*22),color:r.map(x=>x.conf),colorscale:[[0,'#bfdbfe'],[0.5,'#818cf8'],[1,'#4f46e5']],showscale:true,colorbar:{title:{text:'Conf'},tickformat:'.0%',len:0.6,thickness:12,tickfont:{size:10},titlefont:{size:10}},opacity:0.8,line:{color:'#fff',width:1}},
+    text:r.map(x=>x.id),
+    customdata:r.map(x=>[x.lift, x.outc.replace(/_/g,' ')]),
+    hovertemplate:'<b>%{text}</b><br>Outcome: %{customdata[1]}<br>Confidence: %{y:.1f}%<br>Support: %{x:.3f}<br>Lift: %{customdata[0]:.2f}×<extra></extra>'
+  }],makeLayout({
+    xaxis:{type:'linear',title:'Support',tickformat:'.3f'},
+    yaxis:{type:'linear',title:'Confidence %',tickformat:'.1f'}
+  }),CFG);
 }
 
 /* ── Models ── */
 function renderModels(){
   const s=[...MR].sort((a,b)=>a.f1-b.f1);
-  Plotly.react('p-f1',[{type:'bar',orientation:'h',y:s.map(m=>m.label),x:s.map(m=>m.f1),error_x:{type:'data',array:s.map(m=>m.f1s),visible:true,color:'#94a3b8',thickness:2},marker:{color:s.map(m=>m.kind==='B'?'#cbd5e1':'#2563eb'),line:{color:'#fff',width:1}},text:s.map(m=>m.f1.toFixed(3)),textposition:'outside',hovertemplate:'%{y}: %{x:.3f}<extra></extra>'}],{...PL,xaxis:{...PL.xaxis,title:'Macro-F1',range:[0,0.78]},margin:{t:20,r:40,b:44,l:145},shapes:[{type:'line',x0:0.35,x1:0.35,y0:-0.5,y1:s.length-0.5,line:{color:'#d97706',dash:'dash',width:1.5}}],annotations:[{x:0.35,y:s.length-0.5,text:'Best naive baseline',showarrow:false,font:{size:9,color:'#92400e'},xanchor:'left',xshift:6}]},CFG);
+  Plotly.react('p-f1',[{
+    type:'bar',orientation:'h',y:s.map(m=>m.label),x:s.map(m=>m.f1),
+    error_x:{type:'data',array:s.map(m=>m.f1s),visible:true,color:'#94a3b8',thickness:2},
+    marker:{color:s.map(m=>m.kind==='B'?'#cbd5e1':'#2563eb'),line:{color:'#fff',width:1}},
+    text:s.map(m=>m.f1.toFixed(3)),textposition:'outside',
+    hovertemplate:'<b>%{y}</b><br>Macro-F1: %{x:.3f}<extra></extra>'
+  }],makeLayout({
+    yaxis:{type:'category'},
+    xaxis:{type:'linear',title:'Macro-F1',range:[0,0.78],tickformat:'.2f'},
+    margin:{t:20,r:40,b:44,l:145},
+    shapes:[{type:'line',x0:0.35,x1:0.35,y0:-0.5,y1:s.length-0.5,line:{color:'#d97706',dash:'dash',width:1.5}}],
+    annotations:[{x:0.35,y:s.length-0.5,text:'Best naive baseline',showarrow:false,font:{size:9,color:'#92400e'},xanchor:'left',xshift:6}]
+  }),CFG);
+
   const ms=MR.filter(m=>m.kind==='M');
-  Plotly.react('p-recall',[{type:'bar',name:'Rise ↑',x:ms.map(m=>m.label),y:ms.map(m=>m.ri),marker:{color:'#16a34a'}},{type:'bar',name:'Fall ↓',x:ms.map(m=>m.label),y:ms.map(m=>m.fr),marker:{color:'#dc2626'}},{type:'bar',name:'Flat →',x:ms.map(m=>m.label),y:ms.map(m=>m.flat),marker:{color:'#94a3b8'}}],{...PL,barmode:'group',yaxis:{...PL.yaxis,title:'Recall',range:[0,1]},xaxis:{...PL.xaxis,tickangle:-25},showlegend:true,legend:{...PL.legend,orientation:'h',y:-0.4},margin:{t:20,r:18,b:95,l:50}},CFG);
+  Plotly.react('p-recall',[
+    {type:'bar',name:'Rise ↑',x:ms.map(m=>m.label),y:ms.map(m=>m.ri),marker:{color:'#16a34a'},hovertemplate:'<b>%{x}</b><br>Rise Recall: %{y:.2f}<extra></extra>'},
+    {type:'bar',name:'Fall ↓',x:ms.map(m=>m.label),y:ms.map(m=>m.fr),marker:{color:'#dc2626'},hovertemplate:'<b>%{x}</b><br>Fall Recall: %{y:.2f}<extra></extra>'},
+    {type:'bar',name:'Flat →',x:ms.map(m=>m.label),y:ms.map(m=>m.flat),marker:{color:'#94a3b8'},hovertemplate:'<b>%{x}</b><br>Flat Recall: %{y:.2f}<extra></extra>'}
+  ],makeLayout({
+    barmode:'group',
+    xaxis:{type:'category',tickangle:-25},
+    yaxis:{type:'linear',title:'Recall',range:[0,1],tickformat:'.2f'},
+    showlegend:true,
+    legend:{orientation:'h',y:-0.4},
+    margin:{t:20,r:18,b:95,l:50}
+  }),CFG);
+
   const bs=[...BD].sort((a,b)=>a.F1-b.F1);
-  Plotly.react('p-binary',[{type:'bar',orientation:'h',y:bs.map(m=>m.Model),x:bs.map(m=>m.F1),marker:{color:bs.map(m=>m.F1>=0.63?'#16a34a':'#2563eb'),line:{color:'#fff',width:1}},text:bs.map(m=>m.F1.toFixed(2)),textposition:'outside',hovertemplate:'%{y}: F1=%{x:.2f}<extra></extra>'}],{...PL,xaxis:{...PL.xaxis,title:'Binary F1 (price rises >5%)',range:[0,0.78]},margin:{t:20,r:40,b:44,l:120}},CFG);
+  Plotly.react('p-binary',[{
+    type:'bar',orientation:'h',y:bs.map(m=>m.Model),x:bs.map(m=>m.F1),
+    marker:{color:bs.map(m=>m.F1>=0.63?'#16a34a':'#2563eb'),line:{color:'#fff',width:1}},
+    text:bs.map(m=>m.F1.toFixed(2)),textposition:'outside',
+    hovertemplate:'<b>%{y}</b><br>Binary F1: %{x:.2f}<extra></extra>'
+  }],makeLayout({
+    yaxis:{type:'category'},
+    xaxis:{type:'linear',title:'Binary F1 (price rises >5%)',range:[0,0.78],tickformat:'.2f'},
+    margin:{t:20,r:40,b:44,l:120}
+  }),CFG);
 }
 
 /* ── Market ── */
@@ -364,8 +588,29 @@ function renderMarket(){
   const data=KD.filter(r=>r.Crop===mkCrop),sorted=[...data].sort((a,b)=>b[key]-a[key]),top15=[...sorted].slice(0,15).reverse();
   document.getElementById('mk-lbl').textContent=mkCrop+' · ranked by '+keyLbl;
   document.getElementById('mk-cv-lbl').textContent='CV % across all mandis · '+mkCrop;
-  Plotly.react('p-mandis',[{type:'bar',orientation:'h',y:top15.map(m=>m.Market_Name.replace(' Apmc Market','')),x:top15.map(m=>m[key]),marker:{color:COL[mkCrop],opacity:0.8,line:{color:'#fff',width:1}},text:top15.map(m=>m[key].toFixed(key.includes('Price')?0:1)),textposition:'outside',hovertemplate:'<b>%{y}</b><br>'+keyLbl+': %{x:.1f}<extra></extra>'}],{...PL,xaxis:{...PL.xaxis,title:keyLbl},margin:{t:20,r:70,b:44,l:145}},CFG);
-  Plotly.react('p-cv',[{x:data.map(m=>m.Price_Volatility_CV_Pct),type:'histogram',nbinsx:10,marker:{color:COL[mkCrop],opacity:0.7,line:{color:'#fff',width:1}},hovertemplate:'CV: %{x:.1f}%<br>Count: %{y}<extra></extra>'}],{...PL,xaxis:{...PL.xaxis,title:'Price Volatility (CV %)'},yaxis:{...PL.yaxis,title:'# Mandis'}},CFG);
+  Plotly.react('p-mandis',[{
+    type:'bar',orientation:'h',
+    y:top15.map(m=>m.Market_Name.replace(' Apmc Market','')),
+    x:top15.map(m=>m[key]),
+    marker:{color:COL[mkCrop],opacity:0.8,line:{color:'#fff',width:1}},
+    text:top15.map(m=>m[key].toFixed(key.includes('Price')?0:1)),
+    textposition:'outside',
+    hovertemplate:'<b>%{y}</b><br>'+keyLbl+': '+(key.includes('Price')?'₹%{x:,.0f}/qtl':'%{x:.1f}')+'<extra></extra>'
+  }],makeLayout({
+    yaxis:{type:'category'},
+    xaxis:{type:'linear',title:keyLbl,tickformat:key.includes('Price')?',.0f':'.1f'},
+    margin:{t:20,r:70,b:44,l:145}
+  }),CFG);
+
+  Plotly.react('p-cv',[{
+    x:data.map(m=>m.Price_Volatility_CV_Pct),
+    type:'histogram',nbinsx:10,
+    marker:{color:COL[mkCrop],opacity:0.7,line:{color:'#fff',width:1}},
+    hovertemplate:'Volatility CV: %{x}%<br>Mandi Count: %{y}<extra></extra>'
+  }],makeLayout({
+    xaxis:{type:'linear',title:'Price Volatility (CV %)',tickformat:'.1f'},
+    yaxis:{type:'linear',title:'# Mandis',tickformat:'d'}
+  }),CFG);
   document.getElementById('mk-tbl').innerHTML=sorted.slice(0,20).map(r=>`<tr><td>${r.Market_Name.replace(' Apmc Market','')}</td><td>${r.State}</td><td class="mono">₹${r.Annual_Mean_Price.toLocaleString('en-IN',{maximumFractionDigits:0})}</td><td class="mono"><span class="pill ${r.Price_Volatility_CV_Pct>6?'pr':r.Price_Volatility_CV_Pct>5?'pa':'pg'}">${r.Price_Volatility_CV_Pct.toFixed(2)}%</span></td><td class="mono">₹${r.Min_Historical_Price.toLocaleString('en-IN',{maximumFractionDigits:0})}</td><td class="mono">₹${r.Max_Historical_Price.toLocaleString('en-IN',{maximumFractionDigits:0})}</td><td class="mono">${r.Mean_Weekly_Arrivals_MT.toFixed(0)}</td><td class="mono">${r.Mean_Weekly_Rainfall_mm.toFixed(1)}</td><td class="mono">${r.Mean_Weekly_Temp_C.toFixed(1)}</td></tr>`).join('');
 }
 
@@ -377,16 +622,17 @@ function renderGaps(){
   document.getElementById('gaps-tbody').innerHTML=rows.map(g=>`<tr><td><span class="pill ${cm[g.s]}" style="padding:4px 10px">${g.s}</span></td><td style="font-size:12.5px">${g.g}</td><td style="font-size:12.5px;color:#475569">${g.h}</td><td style="font-size:12px;color:#475569">${g.e}</td><td style="font-size:12px;color:#94a3b8">${g.l}</td></tr>`).join('');
 }
 
-/* ── INIT: render ALL charts immediately so no tab is empty ── */
+/* ── INIT: render ALL charts immediately, and show requested or overview tab ── */
 window.addEventListener('load',()=>{
-  renderOverview();
-  renderForecast();
-  renderWxAll();
-  renderRules();
-  renderModels();
-  renderMarket();
-  renderGaps();
+  const hash = (location.hash||'').replace('#','');
+  const target = TABS.includes(hash) ? hash : 'overview';
+  showTab(target, false);
 });
+window.addEventListener('hashchange',()=>{
+  const hash = (location.hash||'').replace('#','');
+  if(TABS.includes(hash)) showTab(hash, false);
+});
+
 </script>
 </body>
 </html>
